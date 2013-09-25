@@ -1,0 +1,18 @@
+CACHE MANIFEST
+# Cache manifest version 0.0.1
+index.html
+css/bootstrap-responsive.css
+css/bootstrap.css
+css/buttons.css
+css/buttons.less
+css/main.css
+js/main.js
+lib/bootstrap.min.js
+lib/socket.io.min.js
+
+http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js
+
+NETWORK:
+# All URLs that start with the following lines
+# are whitelisted.
+*
