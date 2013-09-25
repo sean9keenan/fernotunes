@@ -1,11 +1,15 @@
 CACHE MANIFEST
-# Cache manifest version 0.0.4
+# Cache manifest version 0.0.9
 index.html
 css/bootstrap-responsive.css
 css/bootstrap.css
 css/buttons.css
 css/buttons.less
 css/main.css
+img/apple-touch-icon-ipad.jpeg
+img/apple-touch-icon-iphone.jpg
+img/apple-touch-icon-iphone4.jpg
+img/ferno.jpg
 js/main.js
 lib/bootstrap.min.js
 lib/socket.io.min.js
