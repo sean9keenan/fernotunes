@@ -4,17 +4,17 @@ from autobahn.websocket import WebSocketClientFactory, \
                                WebSocketClientProtocol, \
                                connectWS
 
-# spotify = Spotify()
+spotify = Spotify()
 
-# allCommands = [spotify.playpause,
-#                spotify.previous,
-#                spotify.next,
-#                spotify.volumeUp,
-#                spotify.volumeDown,
-#                spotify.isPlaying,
-#                spotify.stop,
-#                spotify.mute,
-#                spotify.focus]
+allCommands = [spotify.playpause,
+               spotify.previous,
+               spotify.next,
+               spotify.volumeUp,
+               spotify.volumeDown,
+               spotify.isPlaying,
+               spotify.stop,
+               spotify.mute,
+               spotify.focus]
 
 def validCall(self, parameters):
   return True
