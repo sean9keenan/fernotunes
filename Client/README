@@ -1,0 +1,2 @@
+easy_install autobahn
+python setup.py install

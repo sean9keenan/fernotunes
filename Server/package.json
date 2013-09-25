@@ -1,0 +1,30 @@
+{
+  "name": "linkAutomation",
+  "version": "0.1.0-0",
+  "dependencies": {
+    "express": ">= 2.5.8",
+    "ws": ">= 0.0.1",
+    "jquery": ">= 0.0.1",
+    "socket.io": ">= 0.0.1",
+    "stache": ">=0.0.1",
+    "request": ">= 2.10.0",
+    "mongoose": ">=0.0.1",
+    "bouncy": ">=0.0.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "author": "Sean Keenan <linkSean@skeenan.com> (http://skeenan.com)",
+  "description": "Inferno is the best!",
+  "homepage": "http://fernotunes.skeenan.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sean9keenan/FernoTunes.git"
+  },
+  "subdomain": "homeAutomation"
+}
