@@ -48,7 +48,7 @@ class MacVersion:
     artist = do_oscacript("artist of current track as string")
     title = do_oscacript("name of current track as string")
     album = do_oscacript("album of current track as string")
-    return title + "\n" + artist + " - " + album
+    return title + "<br>" + artist + " - " + album
 
 spotify = None
 if os.name == "posix":
@@ -75,7 +75,7 @@ def restartFactory():
 class EchoClientProtocol(WebSocketClientProtocol):
 
   def sendHello(self):
-    self.sendMessage("Hello, world!")
+    self.sendMessage(str(spotify))
 
   def onOpen(self):
     self.sendHello()
