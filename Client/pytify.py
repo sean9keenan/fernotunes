@@ -104,8 +104,8 @@ class Spotify(object):
 		if self.isPlaying():
 			nowplaying = "Now playing "+self.getCurrentArtist()+ " - "+self.getCurrentTrack()
 		else:
-			nowplaying = "Not playing anything at the moment."
-		return "Spotify running! "+nowplaying
+			nowplaying = "Nothing is playing"
+		return nowplaying
 
 	class SpotifyWindowNotFoundException:
 		def __str__(self):

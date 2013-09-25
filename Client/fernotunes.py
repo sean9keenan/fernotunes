@@ -36,7 +36,9 @@ class MacVersion:
   def volumeDown(self):
     pass
   def isPlaying(self):
-    pass
+    state = do_oscacript("player state as text")
+    print (state.strip() == "playing")
+    return (state.strip() == "playing")
   def stop(self):
     pass
   def mute(self):
@@ -48,7 +50,10 @@ class MacVersion:
     artist = do_oscacript("artist of current track as string")
     title = do_oscacript("name of current track as string")
     album = do_oscacript("album of current track as string")
-    return title + "<br>" + artist + " - " + album
+    if self.isPlaying():
+      return title + "<br>" + artist + " - " + album
+    else:
+      return "Nothing is playing"
 
 spotify = None
 if os.name == "posix":
