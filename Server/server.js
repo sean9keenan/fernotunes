@@ -81,7 +81,7 @@ function generatePerformAction(jsonIn){
 
 try{
 
-var clientCallback;
+var clientCallback = [];
 
 io.sockets.on('connection', function (socket) {
 
@@ -93,9 +93,17 @@ io.sockets.on('connection', function (socket) {
 
     unique = socket.handshake.headers["x-forwarded-for"].replace(/,/g, '')
 
-    if (clientCallback != null){
-      clientCallback(data.action + "," + unique)
-    }
+    // if (clientCallback != null){
+    //   clientCallback(data.action + "," + unique)
+    // }
+
+    // if (clientCallback != []) {
+    //   for (var i = clientCallback.length - 1; i >= 0; i--) {
+    //     clientCallback[i](data.action + "," + unique, i)
+    //   };
+    // }
+
+    wss.broadcast(data.action + "," + unique)
 
     // socket.emit('devices:create', json);
     // socket.broadcast.emit('devices:create', json);
@@ -110,6 +118,7 @@ var WebSocketServer = ws.Server
 
 wss.on('connection', function(socket) {
   console.log('connect!')
+  socket.valid = true
 
   socket.on('message', function(message) {
     console.log('received: %s', message);
@@ -120,25 +129,30 @@ wss.on('connection', function(socket) {
 
   socket.on('close', function(reason) {
     console.log('connection closed')
-    clientCallback = null
+    socket.valid = false
   });
 
-  clientCallback = function(msg) {
+  clientCallback.push(function(msg, index) {
     console.log("sending: " + msg)
-    socket.send(msg)
-  };
-
-  // setInterval(function() {
-  //   socket.send('something');
-  // }, pingMinutes*1000);
+    if (socket.valid) {
+      socket.send(msg)
+    } else if (index != -1) {
+      clientCallback.splice(i, 1)
+    }
+  });
 
 });
 
-setInterval(function() {
-  if (clientCallback != null) {
-    clientCallback('ping');
-  }
-}, pingMinutes*60*1000);
+wss.broadcast = function(data) {
+    for(var i in this.clients)
+        this.clients[i].send(data);
+};
+
+// setInterval(function() {
+//   if (clientCallback != null) {
+//     clientCallback('ping');
+//   }
+// }, pingMinutes*60*1000);
 
 // var server = socket.createServer();
 
